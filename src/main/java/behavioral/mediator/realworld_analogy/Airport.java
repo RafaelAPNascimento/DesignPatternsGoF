@@ -2,26 +2,28 @@ package behavioral.mediator.realworld_analogy;
 
 public class Airport implements ControlTower {
 
-    private Object lock;
+    private Object permissionLock;
     private String name;
-    private boolean runwayFree;
+    private boolean landAuthorized = true;      // runway starts free
 
 
     public Airport(String name) {
         this.name = name;
-        lock = new Object();
+        permissionLock = new Object();
     }
 
     @Override
     public void requestPermissionToLand(Flight flight) {
 
-        synchronized (lock) {
+        synchronized (permissionLock) {
+            landAuthorized = false;
             flight.setAuthorized(true);
+            landAuthorized = true;
         }
     }
 
-    public boolean isRunwayFree() {
-        return runwayFree;
+    public boolean isLandingAuthorized() {
+        return landAuthorized;
     }
 
     @Override

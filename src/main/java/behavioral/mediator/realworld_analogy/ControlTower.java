@@ -2,9 +2,9 @@ package behavioral.mediator.realworld_analogy;
 
 public interface ControlTower {
 
-    public void requestPermissionToLand(Flight flight);
+    void requestPermissionToLand(Flight flight);
 
-    public String getName();
+    String getName();
 
-    boolean isRunwayFree();
+    boolean isLandingAuthorized();
 }

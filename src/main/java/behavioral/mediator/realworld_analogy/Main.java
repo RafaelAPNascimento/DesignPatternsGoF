@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         Airport miamiAirport = new Airport("Miami International Airport");
+
         Thread boeingFlyEmirates = new Thread(new BoeingFlight("Fly Emirates ", miamiAirport));
         Thread boeingLufthansa = new Thread(new BoeingFlight("Lufhtansa", miamiAirport));
         Thread boeingAmericanAirlines = new Thread(new BoeingFlight("American Airlines", miamiAirport));
