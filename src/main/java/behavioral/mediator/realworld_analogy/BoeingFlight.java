@@ -11,12 +11,12 @@ public class BoeingFlight extends Flight {
     @Override
     public void startLanding() {
 
-        System.out.println(this.flightName +" start landing..."+ controlTower.getName());
+        System.out.println(String.format("> %s starts landing at %s...", flightName, controlTower.getName()));
 
         try {
             Thread.sleep(ThreadLocalRandom.current().nextInt(100, 500));    // landing takes some time...
             setLanded(true);
-            System.out.println(this.flightName +" has just landed at "+controlTower.getName());
+            System.out.println(String.format(">>> %s has just landed at %s!", flightName, controlTower.getName()));
         }
         catch (InterruptedException e) {
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class BoeingFlight extends Flight {
     @Override
     public void run() {
 
-        System.out.println(this.flightName +" is approaching "+ controlTower.getName());
+        System.out.println(String.format("%s is approaching the %s...", flightName, controlTower.getName()));
 
         try {
             while (!controlTower.isLandingAuthorized()) {
